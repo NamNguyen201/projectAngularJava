@@ -1,0 +1,68 @@
+<div class="container">
+  <div class="listdata">
+    <h1 class="headding-listdata">{{'common.dialog-search.title-search' | translate }}</h1>  
+    <div class="div-button-add">
+      <button mat-button  class="button-add">
+        <mat-icon svgIcon="icon-plus" class="icon-button-add"></mat-icon>
+         {{'common.button.add' | translate }}</button>
+    </div>
+    <div class="paging" >
+        <h1 class="paging-heading">総計 15 / 15 件</h1>
+    </div>
+  </div>
+  <form [formGroup]="locationFormGroup">
+    <ng-container formArrayName="dataArray" *ngIf="dataArray">
+      <table mat-table [dataSource]="dataSource" class="data-table">
+        <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">
+          <th mat-header-cell *matHeaderCellDef >
+            {{ col.label }}
+          </th>
+          <td mat-cell *matCellDef="let element" [formGroup]="element">
+            <div [ngSwitch]="col.key">
+              <div *ngSwitchCase="'id'">
+                <span>{{element.get('index').value}}</span>
+              </div>
+              <div *ngSwitchCase="'isEdit'" >
+                <!-- action button table -->
+                <div  class="group-btn-edit" *ngIf="element.get('isEdit').value ==='none'">
+                  <button type="button"  mat-raised-button color="primary" class="btn-icon btn-icon-edit ">
+                    <mat-icon  class="adjust-icon-edit" svgIcon="button-edit"></mat-icon>
+                  </button>
+                  <button    class="button-remove" type="button"  mat-raised-button color="warn" class="btn-icon btn-icon-delete">
+                    <mat-icon svgIcon="icon-delete-white" class="btn-delete"></mat-icon>
+                  </button>
+                </div>
+                <!-- action button add -->
+                <div *ngIf="element.get('isEdit').value!=='none'"  class="action_table">
+                  <button type="submit"  mat-raised-button color="primary"class="btn-icon">
+                    <mat-icon svgIcon="icon-save"></mat-icon>
+                  </button> 
+                  <button type="button"  mat-raised-button class="btn-icon btn-cancel" >
+                    <mat-icon svgIcon="icon-cancel"></mat-icon>
+                  </button>
+                </div>
+              </div>
+
+              <div *ngSwitchDefault>
+                <mat-form-field *ngIf="element.get('isEdit').value !== 'none' ; else spanInput">
+                  <input matInput [formControlName]="col.key" [type]="col.type">
+                </mat-form-field>
+                <ng-template #spanInput><span>{{element.get(col.key).value}}</span></ng-template>
+              </div>
+            </div>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns; let i = index;" 
+              [ngStyle]="{'background-color': i % 2 ? '#F2F6FF': '#F9FCFF'}"></tr>
+      </table>
+    </ng-container>
+  </form>
+  <div class="set-button-gr-footer">
+    <button type="button"  mat-button class="cky-detail-tabsti btn-export
+      btn-load-product button_showmore">
+      <mat-icon  class="icon-double-show-more" svgIcon="icon-show-more">expand_more</mat-icon>
+      <span class="text-button-showmore">{{'common.button.show-more' | translate }}</span>
+    </button>
+  </div>
+</div>

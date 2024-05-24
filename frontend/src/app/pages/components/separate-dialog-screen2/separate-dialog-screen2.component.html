@@ -1,0 +1,391 @@
+<div *ngIf="allLoad">
+<!-- bất đồng bộ khi call api từ backend -->
+  <div class="list-data">
+    <div class="width-headding" >
+      <h1 class="headding-listdata">在庫調整</h1>  
+    </div>
+    <button  (click)="onCancelSeparateScreen2()"  class="button-close">
+      <mat-icon svgIcon="icon-close" class="icon-button-close"></mat-icon>
+    </button>
+  </div>
+  <button type="submit" (click)="onChart(tableMaster.id)"  mat-raised-button color="primary"class="btn-icon">
+   Chart
+  </button>
+  <button type="submit" (click)="onSeparateScreen2()" [disabled]="dialogSeparateFormGroup.invalid" mat-raised-button color="primary"class="btn-icon">
+    <mat-icon class="icon-save" svgIcon="icon-save"></mat-icon>
+    {{'common.button.add' | translate }}
+  </button> 
+  
+  <div class="example-container">
+    <form [formGroup]="dialogSeparateFormGroup">
+        <table mat-table [dataSource]="dataSource" multiTemplateDataRows="true">
+          <div formGroupName="showRadioButtonForm">
+            <mat-radio-group name="nameRadio" type="number" formControlName="showRadioButton" >  
+              <ng-container matColumnDef="name3-1" >
+                <th mat-header-cell *matHeaderCellDef  colspan="1">入庫予定残数 </th>
+                <td mat-cell *matCellDef="let element ; let i = dataIndex" colspan="1">
+                  <div class="w100" *ngIf="i === 0">	
+                    <mat-form-field class="w100">
+                      <input matInput formControlName="totalTong" class="red-text" readonly>
+                    </mat-form-field>
+                  </div>
+                  <div class="w100" *ngIf="i === 1">	
+                    <mat-radio-button  name="nameRadio"  [value]="1">ｹｰｽ</mat-radio-button>
+                  </div>
+                </td>
+              </ng-container>
+              <ng-container matColumnDef="name3-2" >
+                <th mat-header-cell *matHeaderCellDef  colspan="1"> </th>
+                <td mat-cell *matCellDef="let element ; let i = dataIndex" colspan="1"> 
+                  <div class="w100" *ngIf="i === 0">
+                  
+                  </div>
+                  <div class="w100" *ngIf="i === 1">	
+                    <mat-radio-button  name="nameRadio" [value]="2">ﾎｰﾙ</mat-radio-button>
+                  </div>
+                </td>
+              </ng-container>
+              <ng-container matColumnDef="name3-3" >
+                <th mat-header-cell *matHeaderCellDef  colspan="1"></th>
+                <td mat-cell *matCellDef="let element ; let i = dataIndex" colspan="1">
+                  <div class="w100" *ngIf="i === 0">
+                    
+                  </div>
+                  <div class="w100" *ngIf="i === 1">
+                    <mat-radio-button  name="nameRadio" [value]="3">枚</mat-radio-button>
+                  </div>
+                </td>
+              </ng-container>
+            </mat-radio-group>
+          </div>
+
+          <div formGroupName="Group5keyFormGroup">
+            <div formGroupName="productForm">
+              <ng-container matColumnDef="name1-1">
+                <th mat-header-cell *matHeaderCellDef  colspan="1"> 商品 </th>
+                <td mat-cell *matCellDef="let element ; let i = dataIndex" colspan="1"> 
+                  <div class="w100" *ngIf="i === 0">
+                    <mat-form-field  class="w100">	
+                      <input  matInput type="text" [value]="tableMaster.productEntity.codeProduct" disabled>
+                    </mat-form-field>
+                  </div>
+                  <div class="w100" *ngIf="i === 1">
+                    <mat-form-field  class="w100">	
+                      <input  matInput type="text" formControlName="codeProduct"  (blur)="onBlurCodeProduct()" [matTooltip]="toolTipCodeProduct">
+                    </mat-form-field>
+                  </div>
+                </td>
+              </ng-container>
+
+              <ng-container matColumnDef="name1-2">
+                <th mat-header-cell *matHeaderCellDef  colspan="2"> </th>
+                <td mat-cell *matCellDef="let element ; let i = dataIndex" colspan="2"> 
+                  <div class="w100" *ngIf="i === 0">
+                    <mat-form-field  class="w100">
+                      <input  class="2" matInput type="text" [value]="tableMaster.productEntity.nameProduct" disabled>
+                    </mat-form-field>
+                  </div>
+                  <div class="w100" *ngIf="i === 1">
+                    <mat-form-field  class="w100">
+                      <input  class="2" matInput type="text" formControlName="nameProduct">
+                    </mat-form-field>
+                  </div>
+                </td>
+              </ng-container>
+            
+              <ng-container matColumnDef="weight1-1">
+                <th mat-header-cell *matHeaderCellDef  colspan="3"> 規格 </th>
+                <td mat-cell *matCellDef="let element ; let i = dataIndex" colspan="3"> 
+                  <div class="w100" *ngIf="i === 0">
+                    <mat-form-field  class="w100">
+                      <input matInput type="text"   [value]="tableMaster.productEntity.note" disabled> 
+                    </mat-form-field>
+                  </div>
+                  <div class="w100" *ngIf="i === 1">
+                    <mat-form-field  class="w100">
+                      <input matInput type="text"  formControlName="note"> 
+                    </mat-form-field>
+                  </div>
+                </td>
+              </ng-container>
+            </div>
+            <div formGroupName="ownerForm">
+              <ng-container matColumnDef="symbol1-1">
+                <th mat-header-cell *matHeaderCellDef  colspan="1"> 所有者 </th>
+                <td mat-cell *matCellDef="let element; let i = dataIndex" colspan="1"> 
+                  <div class="w100" *ngIf="i === 0">
+                    <mat-form-field  class="w100">
+                      <input matInput type="text"  [value]="tableMaster.ownerEntity.codeOwner" disabled>
+                    </mat-form-field>
+                  </div>
+                  <div class="w100" *ngIf="i === 1">
+                    <mat-form-field  class="w100">
+                      <input matInput type="text" formControlName="codeOwner" (blur)="onBlurOwner()" [matTooltip]="toolTipCodeOwner">
+                    </mat-form-field>
+                  </div>
+                </td>
+              </ng-container>
+    
+              <ng-container matColumnDef="symbol1-2">
+                <th mat-header-cell *matHeaderCellDef  colspan="2"> </th>
+                <td mat-cell *matCellDef="let element ; let i = dataIndex" colspan="2"> 
+                  <div class="w100" *ngIf="i === 0">
+                    <mat-form-field  class="w100">
+                      <input matInput type="text"   [value]="tableMaster.ownerEntity.nameOwner" disabled="">
+                    </mat-form-field>
+                  </div>
+                  <div class="w100" *ngIf="i === 1">
+                    <mat-form-field  class="w100">
+                      <input matInput type="text" formControlName="nameOwner">
+                    </mat-form-field>
+                  </div>
+                </td>
+                </ng-container>
+            </div>
+            <div formGroupName="supplierForm">
+              <ng-container matColumnDef="symbol2-1">
+                <th mat-header-cell *matHeaderCellDef  colspan="3">仕入先 </th>
+                <td mat-cell *matCellDef="let element ; let i = dataIndex" colspan="3"> 
+                  <div class="w100" *ngIf="i ===0">
+                    <mat-form-field  class="symbol2-1-input-1">
+                    <input matInput type="text" [value]="tableMaster.supplierEntity.codeSupplier" disabled>
+                    </mat-form-field>
+                    <mat-form-field  class="symbol2-1-input-2">
+                      <input matInput type="text" [value]="tableMaster.supplierEntity.nameSupplier" disabled>
+                    </mat-form-field>
+                  </div>
+  
+                  <div class="w100" *ngIf="i ===1">
+                    <mat-form-field  class="symbol2-1-input-1">
+                      <input matInput type="text" formControlName="codeSupplier" (blur)="onBlurCodeSupplier()" [matTooltip]="toolTipCodeSupplier">
+                    </mat-form-field>
+                    <mat-form-field  class="symbol2-1-input-2">
+                      <input matInput type="text" formControlName="nameSupplier">
+                    </mat-form-field>
+                  </div>
+                </td>
+              </ng-container>
+            </div>
+            <div formGroupName="inventoryStatusForm">
+              <ng-container matColumnDef="name2-3">
+                <th mat-header-cell *matHeaderCellDef  colspan="1"> 在庫状態</th>
+                <td mat-cell *matCellDef="let element ; let i = dataIndex" colspan="1"> 
+                  <div class="w100" *ngIf="i === 0">
+                    <mat-form-field  class="w100">
+                      <input matInput type="text"  [value]="tableMaster.inventoryStatusEntity.status" disabled>
+                    </mat-form-field>
+                  </div>
+  
+                  <div class="w100" *ngIf="i === 1">
+                    <mat-form-field  class="w100">
+                      <mat-select formControlName="idInventoryStatus">
+                        <mat-option *ngFor="let idInventoryStatus of inventoryStatus" [value]="idInventoryStatus.id">
+                        {{ idInventoryStatus.status }}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                </td>
+              </ng-container>
+            </div>
+            <div formGroupName="wareHouseForm">
+              <ng-container matColumnDef="name2-1">
+                <th mat-header-cell *matHeaderCellDef  colspan="1"> 倉庫</th>
+                <td mat-cell *matCellDef="let element ; let i = dataIndex" colspan="1"> 
+                  <div class="w100" *ngIf="i === 0">
+                    <mat-form-field  class="w100">
+                      <input matInput type="text" [value]="tableMaster.locationEntity.warehouseEntity.nameWarehouse" disabled>	
+                    </mat-form-field>
+                  </div>
+                  <div class="w100" *ngIf="i === 1">
+                    <mat-form-field class="w100">
+                      <mat-select formControlName="IdWarehouse" (selectionChange)="getIdWareHouseForLocation($event.value)">
+                        <mat-option *ngFor="let IdWarehouse of wareHouse" [value]="IdWarehouse.id">
+                        {{ IdWarehouse.nameWarehouse }}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                </td>
+              </ng-container>
+            </div>
+            <div formGroupName="locationForm">
+              <ng-container matColumnDef="name2-2">
+                <th mat-header-cell *matHeaderCellDef  colspan="1">ロケーション </th>
+                <td mat-cell *matCellDef="let element ; let i = dataIndex" colspan="1"> 
+                  <div class="w100" *ngIf="i === 0">
+                    <mat-form-field  class="w100">
+                      <input matInput type="text" [value]="tableMaster.locationEntity.nameLocation" disabled>
+                    </mat-form-field>
+                  </div>
+  
+                  <div class="w100" *ngIf="i === 1">
+                    <mat-form-field  class="w100">
+                      <mat-select formControlName="idLocation">
+                        <mat-option *ngFor="let idLocation of location" [value]="idLocation.id">
+                        {{ idLocation.nameLocation }}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                </td>
+              </ng-container>
+            </div>
+          </div>
+          
+          <div formGroupName="matDatepickerForm">
+            <ng-container matColumnDef="weight2-1">
+              <th mat-header-cell *matHeaderCellDef  colspan="1">管理日付 </th>
+              <td mat-cell *matCellDef="let element ; let i = dataIndex" colspan="1"> 
+                <div class="w100" *ngIf="i === 0">
+                  <mat-form-field  class="w100">
+                    <input matInput  [value]="tableMaster.date | date: 'YYYY-MM-dd'" disabled>
+                  </mat-form-field>
+                </div>
+                <div class="w100" *ngIf="i === 1">
+                  <mat-form-field  class="w100">
+                    <input matInput [matDatepicker]="picker"  formControlName="matDatepicker">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+                </div>
+              </td>
+            </ng-container>
+          </div>
+
+          <div formGroupName="valueGroupForm">
+            <ng-container matColumnDef="weight3-1">
+              <th mat-header-cell *matHeaderCellDef  colspan="1"> 在庫数</th>
+              <td mat-cell *matCellDef="let element ; let i = dataIndex" colspan="1"> 
+                <div class="w100" *ngIf="i === 0">
+                  <mat-form-field  class="w100">
+                    <input matInput disabled   type="text" [value]="calculatorQuantity(tableMaster, 'one')">
+                  </mat-form-field>
+                </div>
+                <div class="w100" *ngIf="i === 1">
+                  <mat-form-field  class="w100">
+                    <input matInput formControlName="input1">
+                  </mat-form-field>
+                </div>
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="weight3-2">
+              <th mat-header-cell *matHeaderCellDef  colspan="1"> </th>
+              <td mat-cell *matCellDef="let element ; let i = dataIndex" colspan="1"> 
+                <div class="w100" *ngIf="i === 0">
+                  <mat-form-field  class="w100">
+                    <input  matInput  type="text" [value]="calculatorQuantity(tableMaster, 'two')" disabled>
+                  </mat-form-field>
+                </div>
+                <div class="w100" *ngIf="i === 1">
+                  <mat-form-field  class="w100">
+                    <input  matInput formControlName="input2">
+                  </mat-form-field>
+                </div>
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="weight3-3">
+              <th mat-header-cell *matHeaderCellDef  colspan="1"> </th>
+              <td mat-cell *matCellDef="let element ; let i = dataIndex" colspan="1"> 
+                <div class="w100" *ngIf="i === 0">
+                  <mat-form-field  class="w100">
+                    <input  matInput type="text" [value]="calculatorQuantity(tableMaster, 'three')" disabled>
+                  </mat-form-field>
+                </div>
+                <div class="w100" *ngIf="i === 1">
+                  <mat-form-field  class="w100">
+                    <input  matInput formControlName="input3">
+                  </mat-form-field>
+                </div>
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="symbol3-1">
+              <th mat-header-cell *matHeaderCellDef  colspan="1">引当済数 </th>
+              <td mat-cell *matCellDef="let element ; let i = dataIndex" colspan="1"> 
+                <div class="w100" *ngIf="i === 0">
+                  <mat-form-field  class="w100">
+                    <input matInput [value]="tableMaster.number4" disabled>
+                  </mat-form-field>
+                </div>
+                <div class="w100" *ngIf="i === 1">
+                  <mat-form-field  class="w100">
+                    <input matInput formControlName="input4">
+                  </mat-form-field>
+                </div>
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="symbol3-2">
+              <th mat-header-cell *matHeaderCellDef  colspan="1"> </th>
+              <td mat-cell *matCellDef="let element ; let i = dataIndex" colspan="1">
+                <div class="w100" *ngIf="i === 0">
+                  <mat-form-field  class="w100">
+                    <input  matInput [value]="tableMaster.number5" disabled>
+                  </mat-form-field>
+                </div>
+                <div class="w100" *ngIf="i === 1">
+                  <mat-form-field  class="w100">
+                    <input  matInput formControlName="input5">
+                  </mat-form-field>
+                </div>		
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="symbol3-3">
+              <th mat-header-cell *matHeaderCellDef  colspan="1"></th>
+              <td mat-cell *matCellDef="let element ; let i = dataIndex" colspan="1">
+                <div class="w100" *ngIf="i === 0">
+                  <mat-form-field  class="w100">
+                    <input  matInput [value]="tableMaster.number6" disabled>
+                  </mat-form-field>
+                </div>
+                <div class="w100" *ngIf="i === 1">
+                  <mat-form-field  class="w100">
+                    <input  matInput formControlName="input6">
+                  </mat-form-field>
+                </div>
+              </td>
+            </ng-container> 
+            <ng-container matColumnDef="weight3-4">
+              <th mat-header-cell *matHeaderCellDef  colspan="1"> 合計</th>
+              <td mat-cell *matCellDef="let element ; let i = dataIndex" colspan="1"> 
+                <div class="w100" *ngIf="i === 0">
+                  <mat-form-field  class="w100">
+                    <input matInput [value]="tableMaster.quantity" disabled>
+                  </mat-form-field>
+                </div>
+                <div class="w100" *ngIf="i === 1">
+                  <mat-form-field  class="w100">
+                    <input matInput  formControlName="total">
+                  </mat-form-field>
+                </div>
+              </td>
+            </ng-container>     
+          </div> 
+
+          <ng-container matColumnDef="weight2-2">
+            <th mat-header-cell *matHeaderCellDef  colspan="2">管理番号 </th>
+            <td mat-cell *matCellDef="let element ; let i = dataIndex" colspan="2"></td>
+          </ng-container>
+          <!-- cột 3-4 -->
+            
+          <ng-container matColumnDef="name3-4" >
+            <th mat-header-cell *matHeaderCellDef  colspan="1"></th>
+            <td mat-cell *matCellDef="let element ; let i = dataIndex" colspan="1"></td>
+          </ng-container>
+
+          <ng-container matColumnDef="symbol3-4">
+            <th mat-header-cell *matHeaderCellDef  colspan="1"></th>
+            <td mat-cell *matCellDef="let element ; let i = dataIndex" colspan="1"></td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef = "displayedColumns1"></tr>
+          <tr mat-header-row *matHeaderRowDef= "displayedColumns2"></tr>
+          <tr mat-header-row *matHeaderRowDef= "displayedColumns3"></tr>
+    
+          <tr mat-row *matRowDef="let row; columns: displayedColumns1"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns2"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns3"></tr>
+        </table>
+    </form>
+  </div>
+</div>
+  

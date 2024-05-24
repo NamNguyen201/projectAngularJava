@@ -1,0 +1,7 @@
+<app-product-search (searchString)="onSearchPage($event)"
+                    (resetList)="resetListEmployee()"></app-product-search>
+<app-product-table [employees]="employees" 
+                   (formSaveAddRow)="onSaveAdd($event)"
+                   (formSaveEditRow)="onSaveEdit($event)"
+                   (deleteRowId)="onDeleteRow($event)"
+                   (outputLoadMore)="loadMoreProduct()"></app-product-table>

@@ -1,0 +1,108 @@
+.parent-component{
+    /* width: 100%; */
+    box-sizing: border-box;
+    /* position: relative; */
+    /* width: 1268px; */
+    width: 100%;
+    height: 72px;
+    background: #F9FCFF;
+    border-bottom: 3px solid  #000000;
+    position: relative;
+  }
+.mat-form-field{
+    width: 407px;
+    margin-left: 9px;
+    margin-bottom: 10px;
+}
+.group-button-header{
+  display: flex;
+}
+.button-search-action{
+
+/* button */
+
+margin-top: 4px;
+/* Auto layout */
+
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 10px 20px;
+gap: 12px;
+color: #FFFFFF;
+width: 72px;
+height: 30px;
+margin-left: 10px;
+
+/* Primary
+
+primary color
+button, icon, tab, scroll bar
+*/
+background: #4392BB;
+border-radius: 3px;
+
+/* Inside auto layout */
+
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+
+
+}
+.button-clear-action{
+  /* button */
+  box-sizing: border-box;
+  /* Auto layout */
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+  gap: 12px;
+  color: #EB5757;
+  width: 72px;
+  height: 30px;
+  margin-left: 10px;
+  margin-top: 4px;
+
+  /* Medium Color/white 100% */
+
+  background: #FFFFFF;
+  /* Neutral Color/D6D6D6
+
+  input Border
+  */
+  border: 1px solid #D6D6D6;
+  border-radius: 3px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+.header-heading{
+  /* position: absolute; */
+  height: 18px;
+  padding-top: 5px;
+  padding-left: 10px;
+  /* Noto Sans JP/Bold/12px */
+
+  font-family: 'Noto Sans JP';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 150%;
+  /* identical to box height, or 18px */
+
+  letter-spacing: 0.014em;
+
+  /* Text Secondary Color */
+
+  color: #485764;
+}

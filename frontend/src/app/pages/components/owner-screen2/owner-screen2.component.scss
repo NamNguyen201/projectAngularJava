@@ -1,0 +1,200 @@
+.data-table {
+    width: 100%;
+  }
+    
+  .button-add{
+    /* Auto layout */
+  
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    gap: 8px;
+    color: #FFFFFF;
+    width: 72px;
+    height: 30px;
+    margin-left: 10px;
+    margin-top: 6px;
+    margin-bottom: 2px;
+    /* Primary
+  
+    primary color
+    button, icon, tab, scroll bar
+    */
+    background: #4392BB;
+    border-radius: 3px;
+  }
+  .listdata{
+    display: flex;
+    padding-left: 10px;
+    padding-top: 10px;
+    background-color: #F9FCFF;
+  }
+  
+  .headding-listdata{
+   
+    width: 90px;
+  
+    /* Noto Sans JP/Medium/14px */
+  
+    font-family: 'Noto Sans JP';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 150%;
+    /* identical to box height, or 21px */
+  
+    letter-spacing: 0.014em;
+  
+    /* Primary */
+  
+    color: #4392BB;
+  
+      
+  }
+  .mat-header-row{
+    height: 50px;
+  }
+  .span_seemore{
+    color: #4392BB
+  }
+  
+  .action_table{
+    display: flex;
+    margin-left: 10px;
+  }
+  
+  .btn-cancel{
+    margin-left: 10px;
+  }
+  
+  .group-btn-edit{
+    display: flex;
+    margin-left: 10px;
+  }
+  
+  .mat-header-cell{
+    color: black;
+    font-weight: bold;
+    background-color: #F9FCFF;
+    /* text-align: center; */
+  }
+  
+  h1{
+    font-size: 21px;
+    margin-top: 10px;
+  
+  }
+  
+  .mat-column-id{
+    /* width: 130px; */
+    width: 90px;
+    font-size: 12px;
+    min-width: 50px;
+    max-width: 150px;
+  }
+  
+  /* .mat-column-occupation{
+    width: 970px;
+    min-width: 50px;
+    max-width: 1000px;
+  
+  } */
+  .mat-column-codeOwner{
+     width: 160px;
+    min-width: 50px;
+    max-width: 180px
+    
+  }
+  .mat-column-nameOwner{
+    // width: 160px;
+    // min-width: 50px;
+    /* max-width: 180px; */
+    font-size: 13px;
+  }
+  
+  .data-table .mat-column-isEdit{
+    border-left: 1px solid  #D6D6D6;
+    text-align: center;
+    padding-right: 10px;
+    width: 100px;
+    /* min-width: 100px; */
+    /* max-width: 100px; */
+  
+  }
+  
+  .adjust-icon-edit{
+    width: 30px;
+    height: 30px;
+  }
+  
+  
+  .icon-button-add{
+    width: 10px;
+    margin-bottom: 2px; 
+    margin-right: 3px;
+  }
+  
+  .btn-icon-delete{
+    margin-left: 10px;
+  }
+  
+  .button_showmore{
+    height: 35px;
+    width: 118px;
+    border: 1px solid #D6D6D6;
+    border-radius: 3px;
+    position: absolute;
+    padding-bottom: 40px;
+    left: 45%;
+  }
+  
+  .text-button-showmore{
+    color: #4392BB;
+  }
+  
+  .container .listdata .paging{
+    width: 90px;
+  }
+  .listdata .paging .paging-heading{
+    width: 87px;
+    height: 20px;
+  
+    /* Noto Sans JP/Regular/13px */
+  
+    font-family: 'Noto Sans JP';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 150%;
+    /* identical to box height, or 20px */
+  
+    text-align: right;
+    letter-spacing: 0.014em;
+  
+    /* Neutral Color/9F9F9F */
+  
+    color: #9F9F9F;
+  }
+  .set-button-gr-footer{
+    height: 62px;
+    background-color: #F9FCFF;
+    padding-top: 5px;
+  
+  }
+  
+  .table-container-data{
+    max-height: 494px;
+    overflow: auto;
+  }
+  
+  .set-button-gr-footer .mat-icon{
+    height: 23px;
+    width: 10px;
+    margin-right: 4px;
+  }
+  
+  .div-button-add{
+    width: 86.5%;
+  }

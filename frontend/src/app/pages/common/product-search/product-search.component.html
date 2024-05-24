@@ -1,0 +1,10 @@
+<div class="app-data-table parent-component">
+    <h1 class="header-heading">{{'common.dialog-search.title-input' | translate }}</h1>
+  <div class="group-button-header">
+    <mat-form-field>
+      <input matInput type="text" placeholder="{{'common.dialog-search.title-placeholder' | translate }}" [(ngModel)]="searchValue">
+    </mat-form-field>
+    <button mat-button (click)="getValueSearch()"  class="button-search-action">{{'common.button.search' | translate }}</button>
+    <button mat-button (click)="onResetList()" class="button-clear-action">{{'common.button.clear' | translate }}</button>
+  </div>
+</div>

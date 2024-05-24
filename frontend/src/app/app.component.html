@@ -1,0 +1,31 @@
+<ng-container *ngIf="!isLoginPage()">
+    <mat-toolbar color="primary">
+        <mat-toolbar-row >
+            <button mat-button  (click)="opened=!opened">
+                <mat-icon>
+                    menu
+                </mat-icon>
+            </button>
+        </mat-toolbar-row>
+    </mat-toolbar>
+    
+    <mat-sidenav-container>
+        <mat-sidenav [(opened)]="opened" mode="side">
+            <mat-list>
+                <mat-list-item><a routerLink="pages/list">Screen1</a></mat-list-item>
+                <mat-list-item><a routerLink="pages/list2">Screen2</a></mat-list-item>  
+                <mat-list-item><a routerLink="pages/product">Product</a></mat-list-item>
+                <mat-list-item><a routerLink="pages/owner">Owner</a></mat-list-item>
+                <mat-list-item><a routerLink="pages/supplier">Supplier</a></mat-list-item>
+                <mat-list-item><a routerLink="pages/wareHouse">WareHouse</a></mat-list-item>
+                <mat-list-item><a routerLink="pages/location">Location</a></mat-list-item>
+                <mat-list-item><a routerLink="pages/inventoryStatus">InventorySt</a></mat-list-item>
+            </mat-list>       
+        </mat-sidenav>
+        <mat-sidenav-content>
+            <router-outlet></router-outlet>  
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</ng-container>
+<!-- Các phần HTML cho trang login -->
+<router-outlet *ngIf="isLoginPage()"></router-outlet>

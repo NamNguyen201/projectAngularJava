@@ -1,0 +1,356 @@
+<div class="listdata">
+    <h1 class="headding-listdata">{{'common.dialog-search.title-search' | translate }}</h1>  
+    <div class="div-button-add">
+		<button mat-button (click)="openDialogScreen2()" class="button-add">
+			<mat-icon svgIcon="icon-plus" class="icon-button-add"></mat-icon>
+			{{'common.button.add' | translate }}
+		</button>
+    </div>
+    <div class="paging" *ngIf="tableMaster">
+        <h1 class="paging-heading">総計 {{tableMaster.number + 1}} / {{tableMaster.totalPages}} 件</h1>
+    </div>
+</div>
+
+<div class="example-container">
+		<ng-container *ngIf="tableMaster">
+			<table mat-table [dataSource]="dataSource" multiTemplateDataRows="true">
+				
+				<!--Col No. -->
+					<ng-container matColumnDef="position">
+						<th mat-header-cell *matHeaderCellDef  rowspan="3">  No. </th>
+						<td mat-cell *matCellDef="let element; let i = dataIndex "  rowspan="3"> 
+							<div class="w100">
+								{{i+1}}
+								<!-- {{element.id}} -->
+							</div>
+							
+						</td>
+					</ng-container>
+
+
+				<!-- cột 1-1 -->
+					
+					<ng-container matColumnDef="name1-1">
+						<th mat-header-cell *matHeaderCellDef  colspan="1"> 商品 </th>
+						<td mat-cell *matCellDef="let element" colspan="1"> 
+							<div class="w100">
+								<mat-form-field  class="w100">
+									<input disabled matInput type="text"  [value]="element.productEntity.codeProduct">
+								</mat-form-field>
+							</div>
+							
+						</td>
+					</ng-container>
+				
+					
+					<ng-container matColumnDef="weight1-1">
+						<th mat-header-cell *matHeaderCellDef  colspan="3"> 規格 </th>
+						<td mat-cell *matCellDef="let element" colspan="3"> 
+							<div class="w100">
+								<mat-form-field  class="w100">
+									<input disabled  matInput type="text" [value]="element.productEntity.note">
+								</mat-form-field>
+							</div>
+							
+						</td>
+					</ng-container>
+				
+					
+					<ng-container matColumnDef="symbol1-1">
+						<th mat-header-cell *matHeaderCellDef  colspan="1"> 所有者 </th>
+						<td mat-cell *matCellDef="let element" colspan="1"> 
+							<div class="w100">
+								<mat-form-field  class="w100">
+									<input disabled matInput type="text" [value]="element.ownerEntity.codeOwner">
+								</mat-form-field>
+							</div>
+							
+						</td>
+					</ng-container>
+
+				<!-- cot 1-2 -->
+				
+					<ng-container matColumnDef="name1-2">
+						<th mat-header-cell *matHeaderCellDef  colspan="2"> </th>
+						<td mat-cell *matCellDef="let element" colspan="2"> 
+							<div class="w100">
+								<mat-form-field  class="w100">
+									<input disabled matInput type="text" [value]="element.productEntity.nameProduct">
+								</mat-form-field>
+							</div>
+							
+						</td>
+					</ng-container>
+				
+					
+					<ng-container matColumnDef="symbol1-2">
+						<th mat-header-cell *matHeaderCellDef  colspan="2"> </th>
+						<td mat-cell *matCellDef="let element" colspan="2"> 
+							<div class="w100">
+								<mat-form-field  class="w100">
+									<input disabled matInput type="text" [value]="element.ownerEntity.nameOwner">
+								</mat-form-field>
+							</div>
+							
+						</td>
+					</ng-container>
+				
+
+				<!-- cột 2-1 -->
+				
+					<ng-container matColumnDef="name2-1">
+						<th mat-header-cell *matHeaderCellDef  colspan="1"> 倉庫</th>
+						<td mat-cell *matCellDef="let element" colspan="1"> 
+							<div class="w100">
+								<mat-form-field  class="w100">
+									<input disabled matInput type="text" [value]=" element.locationEntity.warehouseEntity.nameWarehouse">
+								</mat-form-field>
+							</div>
+							
+						</td>
+					</ng-container>
+				
+					
+					<ng-container matColumnDef="weight2-1">
+						<th mat-header-cell *matHeaderCellDef  colspan="1">管理日付 </th>
+						<td mat-cell *matCellDef="let element" colspan="1"> 
+							<div class="w100">
+								<mat-form-field  class="w100">
+									<input disabled matInput type="text" [value]="element.date | date: 'YYYY-MM-dd'">
+								</mat-form-field>
+							</div>
+							
+						</td>
+					</ng-container>
+				
+					
+					<ng-container matColumnDef="symbol2-1">
+						<th mat-header-cell *matHeaderCellDef  colspan="3">仕入先 </th>
+						<td mat-cell *matCellDef="let element" colspan="3"> 
+							<div class="w100">
+								<mat-form-field  class="symbol2-1-input-1">
+									<input disabled matInput type="text" [value]="element.supplierEntity.codeSupplier">
+								</mat-form-field>
+								<mat-form-field  class="symbol2-1-input-2">
+									<input disabled matInput type="text" [value]="element.supplierEntity.nameSupplier">
+								</mat-form-field>
+							</div>
+							
+						</td>
+						
+					</ng-container>
+				
+					
+
+
+				<!-- cột 2-2 -->
+				
+					<ng-container matColumnDef="name2-2">
+						<th mat-header-cell *matHeaderCellDef  colspan="1">ロケーション </th>
+						<td mat-cell *matCellDef="let element" colspan="1"> 
+							<div class="w100">
+								<mat-form-field  class="w100">
+									<input disabled matInput type="text" [value]="element.locationEntity.nameLocation">
+								</mat-form-field>
+							</div>
+							
+						</td>
+					
+					</ng-container>
+					<ng-container matColumnDef="weight2-2">
+						<th mat-header-cell *matHeaderCellDef  colspan="2">管理番号 </th>
+						<td mat-cell *matCellDef="let element" colspan="2"></td>
+					</ng-container>
+					
+
+				<!-- cột 2-3 -->
+					
+					<ng-container matColumnDef="name2-3">
+						<th mat-header-cell *matHeaderCellDef  colspan="1"> 在庫状態</th>
+						<td mat-cell *matCellDef="let element" colspan="1"> 
+							<div class="w100">
+								<mat-form-field  class="w100">
+									<input disabled matInput type="text" [value]="element.inventoryStatusEntity.status">	
+								</mat-form-field>
+							</div>
+							
+						</td>
+					</ng-container>
+				
+				<!-- cột 3-1 -->
+					
+					
+					<ng-container matColumnDef="name3-1" >
+						<th mat-header-cell *matHeaderCellDef  colspan="1">入庫予定残数 </th>
+						<td mat-cell *matCellDef="let element" colspan="1"> 
+							<mat-radio-group [name]="'radio'+element.id">
+								<div class="w100">
+									<mat-radio-button disabled [name]="'radio'+element.id" value="1" [checked]="element.showRadioButton === 1">ｹｰｽ</mat-radio-button>
+								</div>
+							</mat-radio-group>
+							
+						</td>
+					</ng-container>
+					
+					<ng-container matColumnDef="weight3-1">
+						<th mat-header-cell *matHeaderCellDef  colspan="1"> 在庫数</th>
+						<td mat-cell *matCellDef="let element" colspan="1"> 
+							<div class="w100">
+								<mat-form-field  class="w100">
+									<input class="input1"  disabled matInput type="number" [value]="calculatorQuantity(element, 'one')">
+								</mat-form-field>
+							</div>
+						</td>
+					</ng-container>
+				
+					<ng-container matColumnDef="symbol3-1">
+						<th mat-header-cell *matHeaderCellDef  colspan="1">引当済数 </th>
+						<td mat-cell *matCellDef="let element" colspan="1"> 
+							<div class="w100">
+								<mat-form-field  class="w100">
+									<input disabled  class="input4" matInput type="text" [value]="element.number4">	
+								</mat-form-field>
+							</div>
+							
+						</td>
+					</ng-container>
+
+				<!-- cột 3-2 -->
+					<ng-container matColumnDef="name3-2" >
+						<th mat-header-cell *matHeaderCellDef  colspan="1"> </th>
+						<td mat-cell *matCellDef="let element" colspan="1"> 
+							<mat-radio-group [name]="'radio'+element.id">
+								<div class="w100">  
+									<mat-radio-button disabled [name]="'radio'+element.id" value="2" [checked]="element.showRadioButton === 2">
+										<strong>ﾎ</strong>
+										ｰﾙ
+									</mat-radio-button>
+								</div>
+							</mat-radio-group>
+						</td>
+					</ng-container>
+					
+					<ng-container matColumnDef="weight3-2">
+						<th mat-header-cell *matHeaderCellDef  colspan="1"> </th>
+						<td mat-cell *matCellDef="let element" colspan="1"> 
+							<div class="w100">
+								<mat-form-field  class="w100">
+									<input disabled  class="input2" matInput type="text" [value]="calculatorQuantity(element, 'two')">
+								</mat-form-field>
+							</div>
+							
+						</td>
+					</ng-container>
+				
+					<ng-container matColumnDef="symbol3-2">
+						<th mat-header-cell *matHeaderCellDef  colspan="1"> </th>
+						<td mat-cell *matCellDef="let element" colspan="1"> 
+							<div class="w100">
+								<mat-form-field  class="w100">
+									<input disabled  class="input5" matInput type="text" [value]="element.number5">
+								</mat-form-field>
+							</div>
+							
+						</td>
+					</ng-container>
+
+				<!-- cột 3-3 -->
+					<ng-container matColumnDef="name3-3" >
+						<th mat-header-cell *matHeaderCellDef  colspan="1"> </th>
+						<td mat-cell *matCellDef="let element" colspan="1"> 
+							<mat-radio-group [name]="'radio'+element.id">
+								<div class="w100">
+									<mat-radio-button disabled [name]="'radio'+element.id" value="3" [checked]="element.showRadioButton === 3">枚</mat-radio-button>
+								</div>
+							</mat-radio-group>
+						</td>
+						
+					</ng-container>
+					
+					<ng-container matColumnDef="weight3-3">
+						<th mat-header-cell *matHeaderCellDef  colspan="1"> </th>
+						<td mat-cell *matCellDef="let element" colspan="1"> 
+						<div>
+							<mat-form-field  class="w100">
+								<input disabled  class="input3" matInput type="text" [value]="calculatorQuantity(element, 'three')">
+							</mat-form-field>
+						</div>
+			
+						</td>
+					</ng-container>
+					
+					<ng-container matColumnDef="symbol3-3">
+						<th mat-header-cell *matHeaderCellDef  colspan="1"> </th>
+						<td mat-cell *matCellDef="let element" colspan="1"> 
+							<div class="w100">
+								<mat-form-field  class="w100">
+									<input disabled  class="input6" matInput type="text" [value]="element.number6">	
+								</mat-form-field>
+							</div>
+						</td>
+					</ng-container>
+
+				<!-- cột 3-4 -->
+					
+					<ng-container matColumnDef="name3-4" >
+						<th mat-header-cell *matHeaderCellDef  colspan="1"></th>
+						<td mat-cell *matCellDef="let element" colspan="1"></td>
+					</ng-container>
+				
+					<ng-container matColumnDef="weight3-4">
+						<th mat-header-cell *matHeaderCellDef  colspan="1"> 合計</th>
+						<td mat-cell *matCellDef="let element" colspan="1"> 
+							<div class="w100">
+								<mat-form-field class="w100">
+									<input disabled class="inputTotal" matInput type="number" [value]="element.quantity">
+								</mat-form-field>
+							</div>			
+						</td>
+					</ng-container>
+				
+					<ng-container matColumnDef="symbol3-4">
+						<th mat-header-cell *matHeaderCellDef  colspan="1"></th>
+						<td mat-cell *matCellDef="let element" colspan="1"></td>
+					</ng-container>
+				
+				<!-- cột 5 -->	
+					<ng-container matColumnDef="action">
+						<th mat-header-cell *matHeaderCellDef  rowspan="3"></th>
+						<td mat-cell *matCellDef="let element" rowspan="3"> 
+							<button type="button" mat-button (click)="openDialogScreen2Edit(element.id)" color="primary"  class="btn-icon-edit">
+								<mat-icon class="adjust-icon-edit" svgIcon="button-edit"></mat-icon>
+							</button> 
+
+							<button type="button" mat-button (click)="openDialogScreen2Separate(element.id)" color="primary"  class="btn-icon-separate">
+								<mat-icon>device_hub</mat-icon>
+								<!-- <mat-icon>share</mat-icon> -->
+							</button>
+							
+							<button type="button" mat-button (click)="openDialogChart(element.id)" color="primary"  class="btn-icon-separate">
+								<mat-icon>timeline</mat-icon>
+							</button>
+							
+							<button type="button" mat-button (click)="openDialogApextChart(element.id)" color="primary"  class="btn-icon-separate">
+								<mat-icon>equalizer</mat-icon>
+							</button> 
+						</td>
+					</ng-container>
+
+				<tr mat-header-row *matHeaderRowDef = "displayedColumns1"></tr>
+				<tr mat-header-row *matHeaderRowDef= "displayedColumns2"></tr>
+				<tr mat-header-row *matHeaderRowDef= "displayedColumns3"></tr>
+
+				<tr mat-row *matRowDef="let row; columns: displayedColumns1"></tr>
+				<tr mat-row *matRowDef="let row; columns: displayedColumns2"></tr>
+				<tr mat-row *matRowDef="let row; columns: displayedColumns3"></tr>
+				
+			</table>
+		</ng-container>
+</div>
+<div class="set-button-gr-footer">
+	<button type="button" *ngIf="tableMaster" [disabled]="tableMaster.last" (click)="onBtnClickShowMore()"  mat-button class="cky-detail-tabsti btn-export
+		btn-load-product button_showMore">
+		<mat-icon  class="icon-double-show-more" svgIcon="icon-show-more">expand_more</mat-icon>
+		<span class="text-button-showmore">{{'common.button.show-more' | translate }}</span>
+	</button>
+</div>

@@ -1,0 +1,8 @@
+
+<app-product-search (searchString)="onSearchPage($event)"
+                    (resetList)="resetListTableMaster()"></app-product-search>
+<app-product-table-screen3 (outputCallDialogScreen2Add)="callDialogScreen2Add()"
+                            (outputCallDialogScreen2Edit)="callDialogScreen2Edit($event)"
+                            (outputCallDialogScreen2Separate)="outputCallDialogScreen2Separate($event)"
+                            [tableMaster]="tableMaster"
+                            (outputButtonShowMore)="loadMoreTableMaster()"></app-product-table-screen3>

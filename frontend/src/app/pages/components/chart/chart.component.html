@@ -1,0 +1,29 @@
+<div id="chart">
+    <div class="btn-click">
+        <button class="button-all" (click)="handleClick(9999)">ALL</button>
+        <button class="button-1-day" (click)="handleClick(1)">1D</button>
+        <button class="button-7-day" (click)="handleClick(7)">7D</button>
+        <button class="button-1-month" (click)="handleClick(30)">1M</button>
+        <button class="button-year" (click)="handleClick(365)">1Y</button>
+
+        <input class="inputMatdayPicker" matInput [matDatepicker]="picker1">
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+
+        <input class="inputMatdayPicker2" matInput [matDatepicker]="picker2">
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2 ></mat-datepicker>
+
+        <button (click)="handleClickSearch()" class="button-search" mat-button><mat-icon>search</mat-icon></button>
+    </div>
+</div>
+<canvas
+    baseChart
+    [datasets]="lineChartData"
+    [labels]="lineChartLabelData"
+    [options]="lineChartDataOptions"
+    [legend]="lineChartDataLegend"
+    [type]="lineChartDataType">
+</canvas>
+<!-- <button (click)="zoomIn()">Zoom In</button> -->
+

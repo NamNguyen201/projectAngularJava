@@ -1,0 +1,64 @@
+#chart {
+    .btn-click {
+        display: flex;
+        float: right;
+        background-color: #f0f0f0;
+        border-radius: 4px;
+        
+    }
+    .inputMatdayPicker,.inputMatdayPicker2{
+        background-color: white;
+        margin-top: 5px;
+        margin-bottom: 6px;
+    }
+
+    .button-1-day, .button-7-day, .button-1-month , .button-year, .button-all{
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .button-all:focus,.button-1-day:focus, .button-7-day:focus, .button-1-month:focus , .button-year:focus {
+        background-color: white;
+    }
+
+    .button-1-day{
+        margin-top: 3px;
+        margin-bottom: 4px;    
+    }
+    .button-7-day{
+        margin-top: 3px;
+        margin-bottom: 4px;
+    }
+    .button-1-month{
+        margin-top: 3px;
+        margin-bottom: 4px;
+    }
+    .button-year{
+        margin-top: 3px;
+        margin-bottom: 4px;
+        margin-right: 4px;
+    }
+    .button-all{
+        margin-top: 3px;
+        margin-bottom: 4px;
+        margin-left: 3px;
+    }
+
+
+    // .button-close{
+    //     margin-top: 10px;
+    //     padding: 0;
+    //     width: 20px;
+    //     height: 20px;
+    //     border: none;
+    //     background-color: #F2F6FF;
+    //     cursor: pointer;
+    // }
+    // .icon-button-close{
+    //     width: 10px;
+    //     height: 16px;
+    //     line-height: 0;
+    //     padding-bottom: 2px;
+    // }
+}
